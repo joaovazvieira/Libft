@@ -36,10 +36,10 @@ int	checker(t_specifier *store)
 		i++;
 	if (store->str[i] == '%')
 		i++;
-	printf("checker ->%c\n", store->str[i]);
+	//printf("checker ->%c\n", store->str[i]);
 	if (ft_strchr("cspdiuxXC%", store->str[i]))
 	{
-		printf("inside ->%c\n", store->str[i]);
+		//printf("inside ->%c\n", store->str[i]);
 		specifier(store->str[i], store);
 	}	/*if statment whit specifier handle args*/
 		// if (ft_strchr("#-+0. ", store->str))

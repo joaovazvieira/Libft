@@ -18,12 +18,12 @@
 
 int	specifier(const char index, t_specifier *store)
 {
-	printf("spec ->%c\n", index);
+	//printf("spec ->%c\n", index);
 	static const t_funPointer	func[] = {
 	['c'] = &ft_putchar,
-	// ['s'] = &ft_putstr,
+	['s'] = &ft_putstr,
 	// ['p'] = &pointer_conv,
-	// ['d'] = &ft_putnbr,
+	['d'] = &ft_putnbr,
 	// ['i'] = &ft_putnbr,
 	// ['u'] = &ft_putnbr_unsigned,
 	// ['x'] = &low_conv,
@@ -54,21 +54,25 @@ int	ft_printf(const char *str, ...)
 
 	if (!str)
 		return (0);
+	store.rtn = 0; 	
 	store.str = str;
-	printf("first ->%s\n", store.str);
+	//printf("first ->%s\n", store.str);
 	va_start(store.data, str);
 		i = 0;
 	while (str[i] != '%')
 		++i;
 	store.buffer = ft_substr(store.str, 0, i);
-	printf("buffer ->%s\n", store.buffer);
+	store.rtn += ft_strlen(store.buffer);
+	//printf("buffer ->%zu\n", i);
 	if (!store.buffer)
 		return (0);
 	//store.str += i;
 	if (store.str[i] == '%')
-		checker(&store);
+		checker(&store);	
 	va_end(store.data);
-	printf("return ->%i\n", store.rtn);
+	//printf("\nreturn ->%i\n", store.rtn);
+	write(1, store.buffer, ft_strlen(store.buffer));
+	free(store.buffer);
 	return (store.rtn);
 }
 

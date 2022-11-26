@@ -24,6 +24,7 @@ SRC=	ft_printf.c\
 		ft_strlen.c\
 		ft_strjoin.c\
 		ft_substr.c\
+		ft_strlcat.c\
 		conv_aph.c\
 		ft_strlcpy.c\
 		parse.c
@@ -45,7 +46,7 @@ else
 OBJ = $(addprefix $(OBJ_DIR)/,$(OBJ_REG))
 endif
 
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -g
 HEADER	:= libftprintf.h
 
 all: $(NAME)

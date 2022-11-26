@@ -12,35 +12,39 @@
 
 #include "../libftprintf.h"
 
-// int	ft_putstr(t_specifier *store)
-// {
-// 	char	*info;
+int	ft_putstr(t_specifier *store)
+{
+	char	*info;
 
-// 	info = va_arg(store->data, char *);
-// 	store->rtn += write(1, info, ft_strlen(info));
-// 	return (0);
-// }
+	info = va_arg(store->data, char *);
+	//printf("info put ->%s\n", info);
+	store->rtn += ft_strlen(info);
+	//printf("after ->%i\n", store->rtn);
+	store->buffer = ft_strjoin(store->buffer, info);
+	//va_end(store->data);
+	return (0);
+}
 
-// int	ft_putnbr(t_specifier *store)
-// {
-// 	long	nbr;
+int	ft_putnbr(t_specifier *store)
+{
+	long	nbr;
 
-// 	nbr = va_arg(store->data, int);
-// 	if (nbr < 0)
-// 	{
-// 		write (1, "-", 1);
-// 		nbr *= -1;
-// 	}
-// 	while (nbr >= 10)
-// 	{
-// 		nbr /= 10;
-// 		nbr %= 10;
-// 		nbr += '0';
-// 		nbr--;
-// 	}
-// 	store->rtn += write (1, &nbr, 1);
-// 	return (0);
-// }
+	nbr = va_arg(store->data, int);
+	if (nbr < 0)
+	{
+		write (1, "-", 1);
+		nbr *= -1;
+	}
+	while (nbr >= 10)
+	{
+		nbr /= 10;
+		nbr %= 10;
+		nbr += '0';
+		nbr--;
+	}
+	store->rtn += write (1, &nbr, 1);
+	return (0);
+}
 
 // int	ft_putnbr_unsigned(t_specifier *store)
 // {
@@ -60,11 +64,12 @@
 
 int	ft_putchar(t_specifier *store)
 {
-	char	*info;
+	unsigned char	info;
 
-	info = va_arg(store->data, char *);
-	printf("info put ->%s\n", info);
-	store->rtn += write(1, info, sizeof (char));
+	info = va_arg(store->data, int);
+	printf("info put ->%c\n", info);
+	store->rtn += write(1, &info, 1);
+	store->buffer = ft_strjoin(store->buffer, (char const *)&info);
 	va_end(store->data);
 	return (0);
 }

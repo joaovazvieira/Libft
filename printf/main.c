@@ -15,7 +15,7 @@
 int main(void)
 {
 	//char	*ptr = "55555";
-	ft_printf("hello%c", 'G');
+	ft_printf("hello %d\n", 42);
 	//printf(" %i\n", printf("%s there\n", ptr));
 	return (0);
 }
