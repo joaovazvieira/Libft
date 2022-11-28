@@ -15,9 +15,11 @@
 int	ft_putstr(t_specifier *store)
 {
 	char	*info;
+	int		i;
 
+	i = 0;
 	info = va_arg(store->data, char *);
-	//printf("info put ->%s\n", info);
+	printf("info put ->%s\n", info);
 	store->rtn += ft_strlen(info);
 	//printf("after ->%i\n", store->rtn);
 	store->buffer = ft_strjoin(store->buffer, info);
@@ -25,26 +27,16 @@ int	ft_putstr(t_specifier *store)
 	return (0);
 }
 
-int	ft_putnbr(t_specifier *store)
-{
-	long	nbr;
+// int	ft_putnbr(t_specifier *store)
+// {
+// 	int		nbr;
+// 	char	*nb;
 
-	nbr = va_arg(store->data, int);
-	if (nbr < 0)
-	{
-		write (1, "-", 1);
-		nbr *= -1;
-	}
-	while (nbr >= 10)
-	{
-		nbr /= 10;
-		nbr %= 10;
-		nbr += '0';
-		nbr--;
-	}
-	store->rtn += write (1, &nbr, 1);
-	return (0);
-}
+// 	nbr = va_arg(store->data, int);
+// 	nb = ft_itoa(nbr);
+// 	store->rtn += write (1, nb, ft_strlen(nb));
+// 	return (0);
+// }
 
 // int	ft_putnbr_unsigned(t_specifier *store)
 // {
@@ -79,3 +71,11 @@ int	ft_putchar(t_specifier *store)
 // 	store->rtn += write(1, '%', sizeof (char));
 // 	return (0);
 // }
+
+int	put_char(t_specifier *store)
+{
+	write (1, store->str, 1);
+	store->str++;
+	store->rtn++;
+	return (0);
+}

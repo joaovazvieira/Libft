@@ -17,11 +17,6 @@ static int	len(unsigned long long nb, size_t mod)
 	int		len;
 
 	len = 0;
-	if (nb < 0)
-	{
-		nb *= -1;
-		len++;
-	}
 	while (nb > 0)
 	{
 		nb /= mod;
@@ -30,7 +25,7 @@ static int	len(unsigned long long nb, size_t mod)
 	return (len);
 }
 
-char	*ft_itoa(unsigned long long nb, char *base)
+char	*ft_itoa_unsigned(unsigned long long nb, char *base)
 {
 	char	*str;
 	int		i;

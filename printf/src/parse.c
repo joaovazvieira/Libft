@@ -32,8 +32,6 @@ int	checker(t_specifier *store)
 	// {
 	// store->str++;
 	i = 0;
-	while (store->str[i] != '%')
-		i++;
 	if (store->str[i] == '%')
 		i++;
 	//printf("checker ->%c\n", store->str[i]);

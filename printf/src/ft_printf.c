@@ -23,7 +23,7 @@ int	specifier(const char index, t_specifier *store)
 	['c'] = &ft_putchar,
 	['s'] = &ft_putstr,
 	// ['p'] = &pointer_conv,
-	['d'] = &ft_putnbr,
+	//['d'] = &ft_putnbr,
 	// ['i'] = &ft_putnbr,
 	// ['u'] = &ft_putnbr_unsigned,
 	// ['x'] = &low_conv,
@@ -58,17 +58,21 @@ int	ft_printf(const char *str, ...)
 	store.str = str;
 	//printf("first ->%s\n", store.str);
 	va_start(store.data, str);
-		i = 0;
-	while (str[i] != '%')
-		++i;
-	store.buffer = ft_substr(store.str, 0, i);
-	store.rtn += ft_strlen(store.buffer);
+	i = 0;
+	while (*store.str)
+	{	
+	//store.buffer = ft_substr(store.str, 0, i);
+	// if (!store.buffer)
+	// 	return (0);
+		if (*store.str == '%')
+			checker(&store);
+		else
+			store.rtn = put_char(&store);
+	//store.rtn += ft_strlen(store.buffer);
 	//printf("buffer ->%zu\n", i);
-	if (!store.buffer)
-		return (0);
-	//store.str += i;
-	if (store.str[i] == '%')
-		checker(&store);	
+		//while (str[i] != '%')
+
+	}	
 	va_end(store.data);
 	//printf("\nreturn ->%i\n", store.rtn);
 	write(1, store.buffer, ft_strlen(store.buffer));
@@ -76,10 +80,3 @@ int	ft_printf(const char *str, ...)
 	return (store.rtn);
 }
 
-// int main(void)
-// {
-// 	//char	*ptr = "55555";
-// 	ft_printf("hello");
-// 	//printf(" %i\n", printf("%s there\n", ptr));
-// 	return (0);
-// }

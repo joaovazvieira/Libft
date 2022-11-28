@@ -19,10 +19,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-char	*ft_itoa(unsigned long long nb, char *base);
+char	*ft_itoa_unsigned(unsigned long long nb, char *base);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
+char	*ft_itoa(int nb);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -58,6 +59,7 @@ int		ft_putchar(t_specifier *store);
 int		ft_putstr(t_specifier *store);
 int		pointer_conv(t_specifier *store);
 int		up_conv(t_specifier *store);
+int		put_char(t_specifier *store);
 int		low_conv(t_specifier *store);
 int		ft_putnbr(t_specifier *store);
 int		ft_putnbr_unsigned(t_specifier *store);

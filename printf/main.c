@@ -14,8 +14,8 @@
 
 int main(void)
 {
-	//char	*ptr = "55555";
-	ft_printf("hello %d\n", 42);
+	char	*ptr = "55555";
+	ft_printf("hello %s hello %s\n", ptr, ptr);
 	//printf(" %i\n", printf("%s there\n", ptr));
 	return (0);
 }

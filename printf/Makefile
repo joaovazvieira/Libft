@@ -17,6 +17,7 @@ SRC_DIR := ./src
 SRC=	ft_printf.c\
 		ft_atoi.c\
 		ft_isdigit.c\
+		ft_itoa.c\
 		ft_itoa_unsigned.c\
 		ft_memcpy.c\
 		ft_strchr.c\
@@ -46,7 +47,7 @@ else
 OBJ = $(addprefix $(OBJ_DIR)/,$(OBJ_REG))
 endif
 
-CFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS	:= -Wall -Wextra -Werror
 HEADER	:= libftprintf.h
 
 all: $(NAME)
