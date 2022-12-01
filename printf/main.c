@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 21:44:37 by jovieira          #+#    #+#             */
-/*   Updated: 2022/11/25 23:09:44 by jovieira         ###   ########.fr       */
+/*   Updated: 2022/11/28 18:21:23 by jovieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int main(void)
 {
-	char	*ptr = "55555";
-	ft_printf("hello %s hello %s\n", ptr, ptr);
-	//printf(" %i\n", printf("%s there\n", ptr));
+	char	*ptr = "66666";
+	ft_printf("Hell %s", ptr);
+	//printf(" %i\n", printf("%s NULL\n", ptr));
 	return (0);
 }

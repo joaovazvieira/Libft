@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:15:02 by jovieira          #+#    #+#             */
-/*   Updated: 2022/11/25 23:50:00 by jovieira         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:59:05 by jovieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,24 +25,43 @@
 // 	return (flags);
 // }
 
+int	printer(t_specifier	*store)
+{
+	int		j;
+	char	*temp;
+
+	j = 0;
+	temp = NULL;
+	while (store->format[store->glob_i] != '%' && store->format)
+		store->glob_i++;
+	if (store->buffer == NULL)
+		store->buffer = ft_substr(store->format, j, store->glob_i);
+	else
+	{
+		temp = ft_substr(store->buffer, j, store->glob_i);
+		free(store->buffer);
+		store->buffer = ft_strjoin(temp, store->format);
+	}
+	store->rtn = ft_strlen(store->buffer);
+	return (0);
+}
+
 int	checker(t_specifier *store)
 {
 	int	i;
-	// if (*(store)->str == '%')
-	// {
-	// store->str++;
+
 	i = 0;
-	if (store->str[i] == '%')
+	if (store->format[i] == '%')
 		i++;
-	//printf("checker ->%c\n", store->str[i]);
-	if (ft_strchr("cspdiuxXC%", store->str[i]))
+	//printf("checker ->%c\n", store->format[i]);
+	if (ft_strchr("cspdiuxXC%", store->format[i]))
 	{
-		//printf("inside ->%c\n", store->str[i]);
-		specifier(store->str[i], store);
+		//printf("inside ->%c\n", store->format[i]);
+		specifier(store->format[i], store);
 	}	/*if statment whit specifier handle args*/
-		// if (ft_strchr("#-+0. ", store->str))
+		// if (ft_strchr("#-+0. ", store->format))
 		// {
-		// 	store->str++;
+		// 	store->format++;
 		// 	/*function that do shit(check which flag)*/
 		// }
 	// }

@@ -6,24 +6,22 @@
 /*   By: jovieira <jovieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 23:22:17 by jovieira          #+#    #+#             */
-/*   Updated: 2022/11/26 00:01:43 by jovieira         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:14:37 by jovieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libftprintf.h"
+#include <stdio.h>
 
 int	ft_putstr(t_specifier *store)
 {
 	char	*info;
-	int		i;
 
-	i = 0;
 	info = va_arg(store->data, char *);
-	printf("info put ->%s\n", info);
 	store->rtn += ft_strlen(info);
-	//printf("after ->%i\n", store->rtn);
 	store->buffer = ft_strjoin(store->buffer, info);
-	//va_end(store->data);
+	if (!store->buffer)
+		return (0);
 	return (0);
 }
 
@@ -74,8 +72,8 @@ int	ft_putchar(t_specifier *store)
 
 int	put_char(t_specifier *store)
 {
-	write (1, store->str, 1);
-	store->str++;
+	write (1, store->format, 1);
+	store->format++;
 	store->rtn++;
 	return (0);
 }

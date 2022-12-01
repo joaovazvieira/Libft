@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:54:22 by jovieira          #+#    #+#             */
-/*   Updated: 2022/11/25 21:55:18 by jovieira         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:56:16 by jovieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include <unistd.h>
 
 char	*ft_itoa_unsigned(unsigned long long nb, char *base);
+char	*ft_itoa(int nb);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_isdigit(int c);
 int		ft_atoi(const char *str);
-char	*ft_itoa(int nb);
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
@@ -46,13 +46,15 @@ typedef struct s_flags
 typedef struct f_specifier
 {
 	va_list		data;
-	const char	*str;
+	const char	*format;
 	char		*buffer;
+	int			glob_i;
 	int			rtn;
 }			t_specifier;
 
 int		checker(t_specifier *store);
 int		specifier(char const index, t_specifier *store);
+int		printer(t_specifier	*store);
 
 typedef int		(*t_funPointer)(t_specifier *list);
 int		ft_putchar(t_specifier *store);

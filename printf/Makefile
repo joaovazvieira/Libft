@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/03 11:33:27 by jovieira          #+#    #+#              #
-#    Updated: 2022/11/25 21:51:19 by jovieira         ###   ########.fr        #
+#    Updated: 2022/11/28 18:12:41 by jovieira         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ OBJ_DIR := ./obj
 SRC_DIR := ./src
 
 SRC=	ft_printf.c\
-		ft_atoi.c\
 		ft_isdigit.c\
+		ft_atoi.c\
 		ft_itoa.c\
 		ft_itoa_unsigned.c\
 		ft_memcpy.c\
@@ -47,7 +47,7 @@ else
 OBJ = $(addprefix $(OBJ_DIR)/,$(OBJ_REG))
 endif
 
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -g
 HEADER	:= libftprintf.h
 
 all: $(NAME)
