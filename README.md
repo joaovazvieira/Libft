@@ -1,4 +1,4 @@
-Project Title: Custom C Library Development
+Project Title: Libft - Custom C Library Development
 
 Project Description:
 In this project, I explore the world of C programming and create your own custom C library.
